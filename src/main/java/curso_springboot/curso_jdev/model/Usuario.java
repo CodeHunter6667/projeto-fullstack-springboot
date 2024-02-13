@@ -15,6 +15,15 @@ public class Usuario {
     private Long id;
     private String nome;
     private Integer idade;
+    
+    public Usuario(Long id, String nome, Integer idade) {
+        this.id = id;
+        this.nome = nome;
+        this.idade = idade;
+    }
+
+    public Usuario(){
+    }
 
     public Long getId() {
         return id;
