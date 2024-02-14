@@ -27,6 +27,11 @@ public class UsuarioService {
         return entity.stream().map(x -> new UsuarioDTO(x)).toList();
     }
 
+    public List<UsuarioDTO> procuraPorNome(String nome){
+        List<Usuario> result = repository.searchByName(nome);
+        return result.stream().map(x -> new UsuarioDTO(x)).toList();
+    }
+
     @Transactional
     public UsuarioDTO novoUsuario(UsuarioDTO dto){
         Usuario usuario = new Usuario();

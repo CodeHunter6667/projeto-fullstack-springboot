@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -27,6 +28,12 @@ public class UsuarioController {
     public ResponseEntity<List<UsuarioDTO>> listaUsuarios(){
         List<UsuarioDTO> usuarios = service.getAll();
         return ResponseEntity.ok(usuarios);
+    }
+
+    @GetMapping(value = "/listanome")
+    public ResponseEntity<List<UsuarioDTO>> procuraPorNome(@RequestParam(name = "nome", defaultValue = "") String nome){
+        List<UsuarioDTO> dto = service.procuraPorNome(nome);
+        return ResponseEntity.ok(dto);
     }
 
     @PostMapping(value = "/salvar")
