@@ -24,6 +24,12 @@ public class UsuarioController {
     @Autowired
     private UsuarioService service;
 
+    @GetMapping(value = "/listaporid")
+    public ResponseEntity<UsuarioDTO> buscaPorId(@RequestParam(name = "id") Long id){
+        UsuarioDTO dto = service.buscaPorId(id);
+        return ResponseEntity.ok(dto);
+    }
+
     @GetMapping(value = "/listatodos")
     public ResponseEntity<List<UsuarioDTO>> listaUsuarios(){
         List<UsuarioDTO> usuarios = service.getAll();

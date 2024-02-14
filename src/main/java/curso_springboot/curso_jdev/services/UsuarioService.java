@@ -27,6 +27,14 @@ public class UsuarioService {
         return entity.stream().map(x -> new UsuarioDTO(x)).toList();
     }
 
+    @Transactional(readOnly = true)
+    public UsuarioDTO buscaPorId(Long id){
+        Usuario entity = repository.findById(id).orElseThrow(
+            () -> new UsuarioNotFoundException("Usuario não encontrado"));
+        return new UsuarioDTO(entity);
+    }
+
+    @Transactional(readOnly = true)
     public List<UsuarioDTO> procuraPorNome(String nome){
         List<Usuario> result = repository.searchByName(nome);
         return result.stream().map(x -> new UsuarioDTO(x)).toList();
