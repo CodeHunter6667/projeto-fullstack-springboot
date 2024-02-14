@@ -49,7 +49,7 @@ public class UsuarioService {
 
     @Transactional(propagation = Propagation.SUPPORTS)
     public void deletaUsuairo(Long id){
-        if (repository.existsById(id)) {
+        if (!repository.existsById(id)) {
             throw new UsuarioNotFoundException("Usuario não encontrado");
         }
         repository.deleteById(id);
