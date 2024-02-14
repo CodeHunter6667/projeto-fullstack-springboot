@@ -23,4 +23,18 @@ public class UsuarioService {
 
         return entity.stream().map(x -> new UsuarioDTO(x)).toList();
     }
+
+    @Transactional
+    public UsuarioDTO novoUsuario(UsuarioDTO dto){
+        Usuario usuario = new Usuario();
+        copyDtoToEntity(dto, usuario);
+        repository.save(usuario);
+        return new UsuarioDTO(usuario);
+    }
+
+    private static void copyDtoToEntity(UsuarioDTO dto, Usuario entity){
+        entity.setId(dto.getId());
+        entity.setNome(dto.getNome());
+        entity.setIdade(dto.getIdade());
+    }
 }
