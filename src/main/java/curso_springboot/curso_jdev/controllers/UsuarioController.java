@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -31,7 +32,6 @@ public class UsuarioController {
     @PostMapping(value = "/salvar")
     public ResponseEntity<UsuarioDTO> cadastraUsuario(@RequestBody UsuarioDTO dto){
         dto = service.novoUsuario(dto);
-
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
                     .buildAndExpand(dto.getId()).toUri();
         return ResponseEntity.created(uri).body(dto);
@@ -41,5 +41,11 @@ public class UsuarioController {
     public ResponseEntity<UsuarioDTO> atualiza(@PathVariable Long id, @RequestBody UsuarioDTO dto){
         service.atualizaUsuario(id, dto);
         return ResponseEntity.ok(dto);
+    }
+
+    @DeleteMapping(value = "/deleta/{id}")
+    public ResponseEntity<Void> deletaUsuario(@PathVariable Long id){
+        service.deletaUsuairo(id);
+        return ResponseEntity.noContent().build();
     }
 }

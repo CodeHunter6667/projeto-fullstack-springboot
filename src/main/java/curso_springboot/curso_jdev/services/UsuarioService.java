@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import curso_springboot.curso_jdev.dto.UsuarioDTO;
@@ -44,6 +45,14 @@ public class UsuarioService {
         } catch (EntityNotFoundException e) {
             throw new UsuarioNotFoundException("Usuario não encontrado.");
         }
+    }
+
+    @Transactional(propagation = Propagation.SUPPORTS)
+    public void deletaUsuairo(Long id){
+        if (repository.existsById(id)) {
+            throw new UsuarioNotFoundException("Usuario não encontrado");
+        }
+        repository.deleteById(id);
     }
 
     private static void copyDtoToEntity(UsuarioDTO dto, Usuario entity){
