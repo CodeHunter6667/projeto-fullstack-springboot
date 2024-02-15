@@ -36,7 +36,7 @@ function pesquisaUser() {
             success: function (response) {
                 $('#tabelaResultados > tbody > tr').remove();
                 for (let i = 0; i < response.length; i++) {
-                    $('#tabelaResultados > tbody').append('<tr><td>' + response[i].id + '</td><td>' + response[i].nome + '</td><td><button type="button" class="btn btn-warning" onclick="colocarEmEdicao(' + response[i].id + ')">Ver</button></td></tr>');
+                    $('#tabelaResultados > tbody').append('<tr id="'+ response[i].id +'"><td>' + response[i].id + '</td><td>' + response[i].nome + '</td><td><button type="button" class="btn btn-warning" onclick="colocarEmEdicao(' + response[i].id + ')">Ver</button><td><button type="button" class="btn btn-danger" onclick="deleteUser(' + response[i].id + ')">Deletar</button></td></td></tr>');
                 }
             }
         }).fail(function (xhr, status, errorThrown) {
@@ -59,5 +59,19 @@ function colocarEmEdicao(id) {
         }
     }).fail(function (xhr, status, errorThrown) {
         alert("Erro ao buscar usuario por id: " + xhr.responseText)
+    })
+}
+
+function deleteUser(id){
+    $.ajax({
+        method: "DELETE",
+        url: "deleta",
+        data: "id=" + id,
+        success: function (response) {
+            $('#' + id).remove();
+            alert("Usuario deletado com sucesso")
+        }
+    }).fail(function (xhr, status, errorThrown) {
+        alert("Erro ao deletar usuario: " + xhr.responseText)
     })
 }
