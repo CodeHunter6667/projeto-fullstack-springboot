@@ -10,9 +10,10 @@
       integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <h3>Spring Boot REST API CRUD Completo JDev Treinamentos</h3>
+    <h4>Cadastro Usuario - Spring Boot</h4>
 
     <form id="formCadastroUsuario">
       <div class="mb-3">
@@ -40,8 +41,9 @@
     </form>
 
     <button type="button" class="btn btn-primary" onclick="salvarUsuario()">Salvar</button>
-    <button type="button" class="btn btn-secondary" id="resetBtn">Novo Usuario</button>
+    <button type="button" class="btn btn-secondary" id="resetBtn" onclick="document.getElementById('formCadastroUsuario').reset()">Novo Usuario</button>
     <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#pesquisarModal">Pesquisar</button>
+    <button type="button" class="btn btn-danger" onclick="deletaUserTela()">Deletar</button>
 
     <div
       class="modal fade"

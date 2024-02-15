@@ -19,12 +19,6 @@ function salvarUsuario() {
 
 }
 
-$(document).ready(function () {
-    $("#resetBtn").click(function () {
-        $("#formCadastroUsuario").trigger("reset");
-    });
-});
-
 function pesquisaUser() {
     let nome = $("#nomeBusca").val();
 
@@ -54,7 +48,6 @@ function colocarEmEdicao(id) {
             $("#id").val(response.id);
             $("#nome").val(response.nome);
             $("#idade").val(response.idade);
-
             $("#pesquisarModal").modal("hide");
         }
     }).fail(function (xhr, status, errorThrown) {
@@ -62,16 +55,24 @@ function colocarEmEdicao(id) {
     })
 }
 
+function deletaUserTela(){
+    let id = $('#id').val();
+    deleteUser(id);
+    document.getElementById('formCadastroUsuario').reset();
+}
+
 function deleteUser(id){
-    $.ajax({
-        method: "DELETE",
-        url: "deleta",
-        data: "id=" + id,
-        success: function (response) {
-            $('#' + id).remove();
-            alert("Usuario deletado com sucesso")
-        }
-    }).fail(function (xhr, status, errorThrown) {
-        alert("Erro ao deletar usuario: " + xhr.responseText)
-    })
+    if(confirm('Deseja deletar o usuáriuo?')){
+        $.ajax({
+            method: "DELETE",
+            url: "deleta",
+            data: "id=" + id,
+            success: function (response) {
+                $('#' + id).remove();
+                alert("Usuario deletado com sucesso")
+            }
+        }).fail(function (xhr, status, errorThrown) {
+            alert("Erro ao deletar usuario: " + xhr.responseText)
+        })
+    }
 }
