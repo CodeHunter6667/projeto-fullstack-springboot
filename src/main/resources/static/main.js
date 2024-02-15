@@ -4,6 +4,18 @@ function salvarUsuario() {
     let nome = $("#nome").val();
     let idade = $("#idade").val();
 
+    if(nome == null || nome != null && nome.trim() == ""){
+        $("#nome").focus();
+        alert("Informe o nome")
+        return;
+    }
+
+    if(idade == null || idade != null && idade.trim() == ""){
+        $("#nome").val();
+        alert("Informe o nome")
+        return;
+    }
+
     $.ajax({
         method: "POST",
         url: "salvar",
@@ -57,8 +69,13 @@ function colocarEmEdicao(id) {
 
 function deletaUserTela(){
     let id = $('#id').val();
-    deleteUser(id);
-    document.getElementById('formCadastroUsuario').reset();
+    if(id != null  && id.trim() != ""){
+        deleteUser(id);
+        document.getElementById('formCadastroUsuario').reset();
+    }else{
+        alert("Busque um usuario para deletar");
+    }
+    
 }
 
 function deleteUser(id){

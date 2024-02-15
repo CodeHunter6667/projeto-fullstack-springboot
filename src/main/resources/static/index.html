@@ -10,7 +10,7 @@
       integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <h4>Cadastro Usuario - Spring Boot</h4>
@@ -40,10 +40,28 @@
       </div>
     </form>
 
-    <button type="button" class="btn btn-primary" onclick="salvarUsuario()">Salvar</button>
-    <button type="button" class="btn btn-secondary" id="resetBtn" onclick="document.getElementById('formCadastroUsuario').reset()">Novo Usuario</button>
-    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#pesquisarModal">Pesquisar</button>
-    <button type="button" class="btn btn-danger" onclick="deletaUserTela()">Deletar</button>
+    <button type="button" class="btn btn-primary" onclick="salvarUsuario()">
+      Salvar
+    </button>
+    <button
+      type="button"
+      class="btn btn-secondary"
+      id="resetBtn"
+      onclick="document.getElementById('formCadastroUsuario').reset()"
+    >
+      Novo Usuario
+    </button>
+    <button
+      type="button"
+      class="btn btn-success"
+      data-bs-toggle="modal"
+      data-bs-target="#pesquisarModal"
+    >
+      Pesquisar
+    </button>
+    <button type="button" class="btn btn-danger" onclick="deletaUserTela()">
+      Deletar
+    </button>
 
     <div
       class="modal fade"
@@ -55,7 +73,9 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Pesquisa de Usuario</h1>
+            <h1 class="modal-title fs-5" id="exampleModalLabel">
+              Pesquisa de Usuario
+            </h1>
             <button
               type="button"
               class="btn-close"
@@ -71,21 +91,27 @@
                 >
                 <input type="text" class="form-control" id="nomeBusca" />
               </div>
-              <button type="button" class="btn btn-success" onclick="pesquisaUser()">Buscar</button>
+              <button
+                type="button"
+                class="btn btn-success"
+                onclick="pesquisaUser()"
+              >
+                Buscar
+              </button>
             </form>
+            <div id="tabelaResult">
             <table class="table" id="tabelaResultados">
-                <thead>
+              <thead>
                   <tr>
                     <th scope="col">Id</th>
                     <th scope="col">Nome</th>
                     <th scope="col">Editar</th>
                     <th scope="col">Deletar</th>
                   </tr>
-                </thead>
-                <tbody>
-                  
-                </tbody>
-              </table>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
           </div>
           <div class="modal-footer">
             <button
