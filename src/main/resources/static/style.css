@@ -1,16 +1,16 @@
 html{
-    margin-left: 35%;
+    margin-left: 5%;
     margin-top: 10%;
 }
 
 #id{
-    width: 20%;
+    width: 50%;
 }
 
 #nome{
-    width: 35%;
+    width: 60%;
 }
 
 #idade{
-    width: 35%;
+    width: 60%;
 }
