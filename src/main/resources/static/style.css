@@ -1,6 +1,6 @@
 html{
     margin-left: 5%;
-    margin-top: 10%;
+    margin-top: 5%;
 }
 
 #id{
@@ -13,4 +13,9 @@ html{
 
 #idade{
     width: 60%;
+}
+
+#tabelaResult{
+    height: 350px;
+    overflow: scroll;
 }
